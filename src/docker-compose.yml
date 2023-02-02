@@ -1,0 +1,33 @@
+version: '3'
+services:
+  db:
+    # コンテナ名の指定
+    container_name: rails_grandmenuapp_db
+    image: mysql:8.0
+    platform: linux/amd64
+    # DBのレコードが日本語だと文字化けするので、utf8をセットする
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: root
+      TZ: "Asia/Tokyo"
+    ports:
+      - "3306:3306"
+    # ローカルにDBを持つ
+    volumes:
+      - ./tmp/db:/var/lib/mysql
+
+  webapl:
+    # コンテナ名の指定
+    container_name: rails_grandmenuapp_webapl
+    build: .
+    image: rails_image
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/grandmenuapp
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
