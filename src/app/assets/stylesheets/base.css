@@ -1,0 +1,177 @@
+:root {
+    --text-primary: rgb(248, 249, 250);
+    --text-secondary: rgb(0,0,0);
+  
+    --bg-primary: rgb(240, 165, 0);
+    --bg-secondary: rgb(248, 249, 250);
+    --bg-focus: rgb(52, 58, 64);
+    --bg-success: rgb(122, 179, 0);
+    --bg-danger: rgb(220, 53, 69);
+    --bg-warning: rgb(255, 193, 7);
+    --bg-info: rgb(23, 162, 184);
+    --bg-disabled: rgb(200, 200, 200);
+    --bg-transparent: transparent;
+
+    --animation-time: .2s;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+header{
+  width: 100vw;
+  height: 50px;
+  background-color: var(--bg-primary);
+  line-height: 50px;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: space-between;
+}
+
+body{
+    font-family: "Avenir", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1{
+    font-size: 2.4rem;
+    line-height: 60px;
+    /* color: var(--text-primary); */
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+h2{
+    font-size: 2.4rem;
+    line-height: 50px;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+h3{
+    font-size: 1.6rem;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    border-left: solid 5px var(--bg-primary);
+    color: var(--text-primary);
+}
+
+h4{
+    font-size: 1.6rem;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    border-left: solid 5px var(--bg-primary);
+    color: var(--text-secondary);
+}    
+
+a {
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+li{
+    list-style-type: none;
+}
+
+input {
+    font-size: 16px;
+}
+select {
+    font-size: 16px;
+}
+button {
+    font-size: 16px;
+}
+
+p{
+    padding: 5px;
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 90vw;
+}
+
+form{
+    width: 280px;
+}
+
+.form{
+    width: 280px;
+    margin: 50 auto;
+}
+
+.text_box{
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    position: relative;
+    display: block;
+    margin: 5px auto 10px;
+    border:solid 2px var(--bg-primary);
+    padding-left: 16px;
+    border-radius: 5px;
+    background-image: linear-gradient(to right, var(--bg-secondary) 50%, var(--bg-focus) 50%);
+    background-position: 0 0;
+    background-size: 200% auto;
+    transition: all var(--animation-time);
+    text-decoration: none;
+    appearance: none;
+}
+.text_box:hover{
+    background-position: -100% 0;
+    color: var(--text-primary);
+}
+
+.submit_button{
+    width: 100%;
+    max-width: 280px;
+    height: 50px;
+    position: relative;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    transition: all var(--animation-time);
+    margin: 20px auto;
+    border-radius: 5px;
+    border: none;
+}
+.submit_button:hover {
+    background: var(--bg-focus);
+}
+
+/* textbox type=numberでスピンボタンを非表示にする */
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+} 
+input[type="number"] { 
+  -moz-appearance:textfield; 
+}
+.wrapper--h-center_v-center{
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper--form--box{
+    height: calc(50vh - 50px);
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.link--secondary{
+    color: var(--text-secondary);
+    font-size: 1.4rem;
+}

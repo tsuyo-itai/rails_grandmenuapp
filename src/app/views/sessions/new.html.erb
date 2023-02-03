@@ -1,29 +1,27 @@
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
 
-<% if flash[:error_messages] %>
-  <div class="alert alert-danger">
-    <ul>
-      <% flash[:error_messages].each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<h1>ログイン</h1>
 
+<div class="wrapper--form--box">
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_with(url: login_path, scope: :session) do |f| %>
+  <%= form_with(url: login_path, scope: :session) do |f| %>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+    <% if flash[:error_messages] %>
+      <div class="alert alert-danger">
+        <ul>
+          <% flash[:error_messages].each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
 
-  </div>
+    <h4>メールアドレス</h4>
+    <%= f.email_field :email, class: 'text_box'  %>
+
+    <h4>パスワード</h4>
+    <%= f.password_field :password, class: 'text_box' %>
+
+    <%= f.submit "Log in", class: "submit_button" %>
+  <% end %>
 </div>

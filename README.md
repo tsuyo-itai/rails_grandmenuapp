@@ -1,6 +1,7 @@
 # Rails Grandmenuアプリ
 
 ## 初期環境構築
+
 下記のファイルを準備
 
 ```text
@@ -98,8 +99,6 @@ hostはdockerコンテナのサービス名
 ```bash
 docker-compose run webapl rails new . --force --no-deps --database=mysql --css bootstrap
 ```
-
-▶ ここで一旦gitへ登録しておく (この際railsアプリケーションディレクトリに作成された`.git`は削除しておく)
 
 ### イメージの構築
 
