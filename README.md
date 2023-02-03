@@ -137,44 +137,48 @@ docker-compose exec webapl rails db:create
 
 ## アプリの作成
 
-### コントローラーの作成
+### ログイン機能の実装
 
-コントローラー名は**複数形**にしておくこと
+#### gemの追加
+
+ログイン機能の実装には`bcrypt`が必要となるので  
+Gemfileに`gem "bcrypt", "~> 3.1.7"` を追加しておく
+
+#### Userモデル作成
 
 ```bash
-docker-compose exec webapl rails g controller todos
+docker-compose exec webapl rails g model User email:string password_digest:string
 ```
 
-### モデルの作成
+※ 生成されたmigrateファイルは適宜修正
 
-```bash
-docker-compose exec webapl rails g model todo title:string content:text status:boolean
-```
-
-作成されたマイグレートファイルを下記のように変更
-
-```ruby
-class CreateTodos < ActiveRecord::Migration[5.2]
-  def change
-    create_table :todos do |t|
-      t.string :title, null: false
-      t.text :content, null: false
-      t.boolean :status, default: false
-
-      t.timestamps
-    end
-  end
-end
-```
-
-`title`、`content`はNULLを許容しない  
-`status`のdefaultをfalseとする
-
-マイグレートの実行
+マイグレーション実行
 
 ```bash
 docker-compose exec webapl rails db:migrate
 ```
+
+生成された`app/models/user.rb`には`has_secure_password`を追加すること  
+(ログイン関連の処理が扱えるようになる)
+
+**デバッグの際などにユーザーオブジェクトを手動で作成する場合**
+
+`rails console`実行後,
+
+```bash
+User.create(email: "test@example.com", password: "hogehoge", password_confirmation: "hogehoge")
+```
+
+### コントローラーの作成
+
+ユーザーのセッション情報の作成・削除を行うsessions_controllerの作成  
+コントローラー名は**複数形**にしておくこと
+
+```bash
+docker-compose exec webapl rails g controller sessions new create destroy --skip-template-engine
+```
+
+※ `--skip-template-engine`オプションでviewファイルは作成しない
 
 ### カスタムCSSの作成
 
