@@ -168,7 +168,7 @@ docker-compose exec webapl rails db:migrate
 User.create(email: "test@example.com", password: "hogehoge", password_confirmation: "hogehoge")
 ```
 
-### コントローラーの作成
+#### コントローラーの作成
 
 ユーザーのセッション情報の作成・削除を行うsessions_controllerの作成  
 コントローラー名は**複数形**にしておくこと
@@ -178,6 +178,15 @@ docker-compose exec webapl rails g controller sessions new create destroy --skip
 ```
 
 ※ `--skip-template-engine`オプションでviewファイルは作成しない
+
+### ユーザー登録機能の実装
+
+#### コントローラーの作成
+
+'''bash
+docker-compose exec webapl rails g controller users
+'''
+
 
 ### カスタムCSSの作成
 

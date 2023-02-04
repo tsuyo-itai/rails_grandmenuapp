@@ -164,7 +164,7 @@ input[type="number"] {
 }
 
 .wrapper--form--box{
-    height: calc(50vh - 50px);
+    /* height: calc(50vh - 50px); */
     display: flex;
     flex-flow: column;
     justify-content: center;

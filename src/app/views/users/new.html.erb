@@ -1,14 +1,10 @@
-<% provide(:title, "Log in") %>
+<% provide(:title, "Sign up") %>
 
-<h1>ログイン</h1>
+<h1>ユーザー登録</h1>
 
 <div class="wrapper--form--box">
 
-  <%= form_with(url: login_path, scope: :session) do |f| %>
-
-    <% if flash[:notice] %>
-      <div class="alert alert-primary"><%= flash[:notice] %></div>
-    <% end %>
+  <%= form_with(model: @user) do |f| %>
 
     <% if flash[:error_messages] %>
       <div class="alert alert-danger">
@@ -26,6 +22,9 @@
     <h4>パスワード</h4>
     <%= f.password_field :password, class: 'text_box' %>
 
-    <%= f.submit "Log in", class: "submit_button" %>
+    <h4>パスワード (確認用)</h4>
+    <%= f.password_field :password_confirmation, class: 'text_box' %>
+
+    <%= f.submit "Sign up", class: "submit_button" %>
   <% end %>
 </div>
