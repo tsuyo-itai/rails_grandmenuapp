@@ -10,6 +10,9 @@ RUN apt-get update && \
     apt-get install -y tzdata && \
     curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs && \
     npm install --global yarn && \
+    # これいらない??
+    # yarn add vue@next && \
+    # yarn add --dev vue-loader@next @vue/compiler-sfc && \
     gem update --system && \
     bundle update --bundler && \
     bundle install

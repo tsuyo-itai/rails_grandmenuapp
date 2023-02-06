@@ -9,6 +9,9 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= stylesheet_link_tag "base", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <!--controllers/application　配下を読み込む-->
+    <%= javascript_import_module_tag 'controllers/application' %>
   </head>
 
   <body>

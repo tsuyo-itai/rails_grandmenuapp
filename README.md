@@ -183,9 +183,38 @@ docker-compose exec webapl rails g controller sessions new create destroy --skip
 
 #### コントローラーの作成
 
-'''bash
+```bash
 docker-compose exec webapl rails g controller users
-'''
+```
+
+### Vue.jsの導入
+
+ここらへんを参考  
+・https://qiita.com/kobayashimakoto/items/12cc6c7834023df6fa39  
+・https://techracho.bpsinc.jp/hachi8833/2022_06_29/112183
+
+Gemfileへ下記を追加  
+`gem 'importmap-rails'`
+
+コンテナ起動後下記を実行
+
+```bash
+docker-compose exec webapl rails importmap:install
+```
+
+VueはCDNで利用するか
+
+```Javascript
+<script type="module">
+  import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+</script>
+```
+
+下記コマンドでvender/javascriptディレクトリにダウンロードするか
+
+```bash
+docker-compose exec webapl ./bin/importmap pin "vue/dist/vue.esm-browser.js" --download
+```
 
 
 ### カスタムCSSの作成

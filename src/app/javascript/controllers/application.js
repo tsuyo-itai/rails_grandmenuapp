@@ -1,9 +1,29 @@
-import { Application } from "@hotwired/stimulus"
+// #if0 ------------
 
-const application = Application.start()
 
-// Configure Stimulus development experience
-application.debug = false
-window.Stimulus   = application
+// import { Application } from "@hotwired/stimulus"
 
-export { application }
+// const application = Application.start()
+
+// // Configure Stimulus development experience
+// application.debug = false
+// window.Stimulus   = application
+
+// export { application }
+
+// #else ------------
+
+// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
+import * as Vue from "vue";
+
+const App = Vue.createApp({
+    data(){
+        return {
+            text: 'Hello Vue!! test ok!'
+        }
+    },
+})
+
+App.mount("#app");
+
+// #endif ------------
